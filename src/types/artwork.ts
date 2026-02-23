@@ -1,5 +1,5 @@
 /** Shape of a single artwork record from the API */
-export interface Artwork {
+export interface Artwork { 
   id: number;
   title: string;
   place_of_origin: string | null;
@@ -10,7 +10,7 @@ export interface Artwork {
 }
 
 /** Pagination metadata returned by the API */
-export interface ArtworkPagination {
+export interface ArtworkPagination { 
   total: number;
   limit: number;
   offset: number;
@@ -19,7 +19,7 @@ export interface ArtworkPagination {
 }
 
 /** Full API response shape */
-export interface ArtworkApiResponse {
+export interface ArtworkApiResponse { 
   pagination: ArtworkPagination;
   data: Artwork[];
 }
