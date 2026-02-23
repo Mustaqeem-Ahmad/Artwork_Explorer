@@ -55,3 +55,4 @@ const SelectionOverlay: React.FC<SelectionOverlayProps> = ({
 };
 
 export default SelectionOverlay;
+
