@@ -12,7 +12,7 @@ import { fetchArtworks } from "@/services/artworkApi";
 import type { Artwork } from "@/types/artwork";
 import SelectionOverlay from "@/components/SelectionOverlay";
 
-const Index: React.FC = () => {
+const Index: React.FC = () =>  {
   const [artworks, setArtworks] = useState<Artwork[]>([]);
   const [loading, setLoading] = useState(false);
   const [totalRecords, setTotalRecords] = useState(0);
@@ -21,7 +21,7 @@ const Index: React.FC = () => {
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
   const overlayRef = useRef<OverlayPanel>(null);
 
-  const loadPage = useCallback(async (page: number) => {
+  const loadPage  = useCallback(async (page: number) => {
     setLoading(true);
     try {
       const response = await fetchArtworks(page);
@@ -29,7 +29,7 @@ const Index: React.FC = () => {
       setTotalRecords(response.pagination.total);
       setCurrentPage(page);
     } catch (error) {
-      console.error("Failed to fetch artworks:", error);
+      console.error ("Failed to fetch artworks:", error);
     } finally {
       setLoading(false);
     }
@@ -40,7 +40,7 @@ const Index: React.FC = () => {
   }, [loadPage]);
 
   const onPageChange = (event: DataTablePageEvent) => {
-    const newPage = Math.floor((event.first ?? 0) / (event.rows ?? rowsPerPage)) + 1;
+    const newPage = Math.floor ((event.first ?? 0) / (event.rows ?? rowsPerPage)) + 1;
     loadPage(newPage);
   };
 
@@ -64,7 +64,7 @@ const Index: React.FC = () => {
 
   const totalPages = Math.ceil(totalRecords / rowsPerPage);
   const showingFirst = totalRecords > 0 ? (currentPage - 1) * rowsPerPage + 1 : 0;
-  const showingLast = Math.min(currentPage * rowsPerPage, totalRecords);
+  const showingLast =  Math.min(currentPage * rowsPerPage, totalRecords);
 
   const getVisiblePages = () => {
     const maxVisible = 5;
@@ -83,11 +83,11 @@ const Index: React.FC = () => {
       <h2 className="text-lg font-semibold text-foreground">
         Art Institute of Chicago — Artworks
       </h2>
-      <Button
+      <Button 
         icon="pi pi-chevron-down"
         label="Select rows…"
         className="p-button-outlined p-button-sm"
-        onClick={(e) => overlayRef.current?.toggle(e)}
+        onClick= {(e) => overlayRef.current?.toggle(e)}
       />
     </div>
   );
